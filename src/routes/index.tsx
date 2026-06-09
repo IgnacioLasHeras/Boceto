@@ -158,33 +158,6 @@ function Landing() {
         </div>
       </section>
 
-      {/* GALERIA */}
-      <section id="galeria" className="py-24 sm:py-32">
-        <div className="container-x">
-          <div className="mx-auto max-w-2xl text-center">
-            <div className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">Portfolio</div>
-            <h2 className="mt-3 font-display text-3xl font-bold sm:text-4xl md:text-5xl">Trabajos realizados</h2>
-            <p className="mt-4 text-muted-foreground">Una muestra de nuestras instalaciones recientes en Buenos Aires.</p>
-          </div>
-          <div className="mt-14 grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-6 md:grid-rows-2 md:gap-5">
-            <div className="group relative col-span-2 row-span-2 md:col-span-3 md:row-span-2 aspect-square overflow-hidden rounded-xl">
-              <img src={gallery[0].src} alt={gallery[0].label} loading="lazy" width={1024} height={1024} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/20 to-transparent" />
-              <div className="absolute bottom-4 left-4 right-4">
-                <div className="text-xs font-medium uppercase tracking-wider text-primary">Destacado</div>
-                <div className="font-display text-xl font-semibold">{gallery[0].label}</div>
-              </div>
-            </div>
-            {gallery.slice(1).map((g) => (
-              <div key={g.label} className="group relative col-span-1 md:col-span-3 lg:col-span-2 md:row-span-1 aspect-square overflow-hidden rounded-xl">
-                <img src={g.src} alt={g.label} loading="lazy" width={1024} height={1024} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent" />
-                <div className="absolute bottom-3 left-3 right-3 font-display text-sm font-semibold">{g.label}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* PROCESO */}
       <section id="proceso" className="relative border-y border-border bg-graphite/40 py-24 sm:py-32">
@@ -270,64 +243,7 @@ function Landing() {
         </div>
       </section>
 
-      {/* FOOTER */}
-      <footer id="contacto" className="border-t border-border bg-graphite/60">
-        <div className="container-x py-16">
-          <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
-            <div>
-              <div className="flex items-center gap-2">
-                <div className="flex h-9 w-9 items-center justify-center rounded-md bg-gradient-orange">
-                  <Hammer className="h-5 w-5 text-primary-foreground" />
-                </div>
-                <span className="font-display text-lg font-bold">DAF<span className="text-gradient-orange">METAL</span></span>
-              </div>
-              <p className="mt-4 text-sm text-muted-foreground">
-                Mosquiteros, herrería y reformas sin romper en Buenos Aires. Más de 10 años brindando soluciones de calidad.
-              </p>
-              <div className="mt-5 flex gap-3">
-                <a href="#" aria-label="Instagram" className="flex h-9 w-9 items-center justify-center rounded-md border border-border hover:bg-primary hover:text-primary-foreground"><Instagram className="h-4 w-4" /></a>
-                <a href="#" aria-label="Facebook" className="flex h-9 w-9 items-center justify-center rounded-md border border-border hover:bg-primary hover:text-primary-foreground"><Facebook className="h-4 w-4" /></a>
-                <a href={WA_LINK} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="flex h-9 w-9 items-center justify-center rounded-md border border-border hover:bg-whatsapp hover:text-whatsapp-foreground"><MessageCircle className="h-4 w-4" /></a>
-              </div>
-            </div>
-            <div>
-              <h4 className="font-display text-sm font-semibold uppercase tracking-wider">Contacto</h4>
-              <ul className="mt-4 space-y-3 text-sm text-muted-foreground">
-                <li className="flex items-center gap-2"><Phone className="h-4 w-4 text-primary" /> +54 9 11 0000-0000</li>
-                <li className="flex items-center gap-2"><MessageCircle className="h-4 w-4 text-primary" /> WhatsApp directo</li>
-                <li className="flex items-start gap-2"><MapPin className="h-4 w-4 text-primary mt-0.5" /> CABA y Gran Buenos Aires</li>
-                <li className="flex items-start gap-2"><Clock className="h-4 w-4 text-primary mt-0.5" /> Lun a Sáb · 8:00 a 19:00</li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-display text-sm font-semibold uppercase tracking-wider">Servicios</h4>
-              <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
-                <li>Mosquiteros a medida</li>
-                <li>Rejas y protecciones</li>
-                <li>Cerramientos</li>
-                <li>Herrería general</li>
-                <li>Reformas sin romper</li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-display text-sm font-semibold uppercase tracking-wider">Zona de servicio</h4>
-              <div className="mt-4 overflow-hidden rounded-lg border border-border">
-                <iframe
-                  title="Mapa Buenos Aires"
-                  src="https://www.google.com/maps?q=Buenos+Aires,+Argentina&output=embed"
-                  width="100%" height="180" loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  className="block grayscale"
-                />
-              </div>
-            </div>
-          </div>
-          <div className="mt-12 flex flex-col items-center justify-between gap-3 border-t border-border pt-6 text-xs text-muted-foreground md:flex-row">
-            <div>© {new Date().getFullYear()} DAFMETAL. Todos los derechos reservados.</div>
-            <div>Buenos Aires, Argentina</div>
-          </div>
-        </div>
-      </footer>
+      <SiteFooter />
 
       <WhatsAppFloat />
     </div>
