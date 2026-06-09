@@ -1,7 +1,7 @@
 import { MessageCircle } from "lucide-react";
 
 const WA_URL =
-  "https://wa.me/5491100000000?text=Hola%20DAFMETAL%2C%20quisiera%20solicitar%20un%20presupuesto.";
+  "https://wa.me/5491100000000?text=Hola%20BOCETO%2C%20quisiera%20solicitar%20un%20presupuesto.";
 
 export const WA_LINK = WA_URL;
 

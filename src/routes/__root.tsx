@@ -69,9 +69,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "DAFMETAL — Mosquiteros, Herrería y Reformas sin Romper en Buenos Aires" },
+      { title: "BOCETO — Mosquiteros, Herrería y Reformas sin Romper en Buenos Aires" },
       { name: "description", content: "Mosquiteros a medida, herrería, rejas, cerramientos y reformas sin romper en Buenos Aires. Presupuestos sin cargo. Trabajos prolios y garantizados." },
-      { property: "og:title", content: "DAFMETAL — Herrería y Reformas sin Romper" },
+      { property: "og:title", content: "BOCETO — Herrería y Reformas sin Romper" },
       { property: "og:description", content: "Soluciones rápidas, limpias y profesionales para hogares y comercios en Buenos Aires." },
       { property: "og:type", content: "website" },
     ],

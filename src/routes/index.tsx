@@ -1,21 +1,19 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   Shield, Hammer, Building2, Home, Wrench, Sparkles, Bug, Zap,
   CheckCircle2, MessageCircle, Phone, MapPin, Clock, Instagram, Facebook,
   ArrowRight, Star, Award, Clock4, ShieldCheck, ThumbsUp, Users, FileText, Truck,
 } from "lucide-react";
 import heroImg from "@/assets/hero-house.jpg";
-import imgMosquitero from "@/assets/work-mosquitero.jpg";
-import imgRejas from "@/assets/work-rejas.jpg";
-import imgCerramiento from "@/assets/work-cerramiento.jpg";
-import imgHerreria from "@/assets/work-herreria.jpg";
-import imgReforma from "@/assets/work-reforma.jpg";
-import { WhatsAppFloat, WA_LINK } from "@/components/WhatsAppFloat";
+import { WhatsAppFloat } from "@/components/WhatsAppFloat";
+import { SiteHeader } from "@/components/SiteHeader";
+import { SiteFooter } from "@/components/SiteFooter";
+import { WAButton } from "@/components/WAButton";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "DAFMETAL — Mosquiteros, Herrería y Reformas sin Romper · Buenos Aires" },
+      { title: "BOCETO — Mosquiteros, Herrería y Reformas sin Romper · Buenos Aires" },
       { name: "description", content: "Mosquiteros a medida, herrería residencial y comercial, rejas, cerramientos y reformas sin romper en Buenos Aires. Presupuesto gratis por WhatsApp." },
     ],
   }),
@@ -44,13 +42,6 @@ const reasons = [
   { icon: MessageCircle, title: "Asesoramiento profesional" },
 ];
 
-const gallery = [
-  { src: imgMosquitero, label: "Mosquiteros instalados" },
-  { src: imgRejas, label: "Rejas modernas" },
-  { src: imgCerramiento, label: "Cerramientos" },
-  { src: imgHerreria, label: "Trabajos de herrería" },
-  { src: imgReforma, label: "Reformas terminadas" },
-];
 
 const steps = [
   { n: "01", icon: MessageCircle, title: "Contacto por WhatsApp", desc: "Escribinos y contanos qué necesitás." },
@@ -65,43 +56,10 @@ const testimonials = [
   { name: "Carolina P.", area: "Belgrano", text: "Reformaron mi baño sin romper paredes. Resultado increíble y sin escombros." },
 ];
 
-function WAButton({ label, variant = "primary", className = "" }: { label: string; variant?: "primary" | "wa" | "outline"; className?: string }) {
-  const base = "inline-flex items-center justify-center gap-2 rounded-md px-6 py-3.5 text-sm font-semibold transition-all duration-200 hover:scale-[1.03]";
-  const styles = {
-    primary: "bg-gradient-orange text-primary-foreground shadow-glow",
-    wa: "bg-whatsapp text-whatsapp-foreground shadow-card",
-    outline: "border border-border bg-card/40 text-foreground backdrop-blur hover:bg-card",
-  } as const;
-  return (
-    <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className={`${base} ${styles[variant]} ${className}`}>
-      <MessageCircle className="h-4 w-4" />
-      {label}
-    </a>
-  );
-}
-
 function Landing() {
   return (
     <div className="min-h-screen bg-background text-foreground">
-      {/* NAV */}
-      <header className="fixed top-0 z-40 w-full border-b border-border/60 bg-background/80 backdrop-blur-md">
-        <div className="container-x flex h-16 items-center justify-between">
-          <a href="#top" className="flex items-center gap-2">
-            <div className="flex h-9 w-9 items-center justify-center rounded-md bg-gradient-orange">
-              <Hammer className="h-5 w-5 text-primary-foreground" />
-            </div>
-            <span className="font-display text-lg font-bold tracking-tight">DAF<span className="text-gradient-orange">METAL</span></span>
-          </a>
-          <nav className="hidden gap-7 text-sm font-medium text-muted-foreground md:flex">
-            <a href="#servicios" className="hover:text-foreground">Servicios</a>
-            <a href="#nosotros" className="hover:text-foreground">Nosotros</a>
-            <a href="#galeria" className="hover:text-foreground">Galería</a>
-            <a href="#proceso" className="hover:text-foreground">Proceso</a>
-            <a href="#contacto" className="hover:text-foreground">Contacto</a>
-          </nav>
-          <WAButton label="Presupuesto" variant="wa" className="hidden md:inline-flex !px-4 !py-2 !text-xs" />
-        </div>
-      </header>
+      <SiteHeader />
 
       {/* HERO */}
       <section id="top" className="relative flex min-h-screen items-center overflow-hidden pt-16">
@@ -124,9 +82,9 @@ function Landing() {
             </p>
             <div className="mt-9 flex flex-wrap gap-3">
               <WAButton label="Solicitar Presupuesto por WhatsApp" variant="primary" />
-              <a href="#galeria" className="inline-flex items-center justify-center gap-2 rounded-md border border-border bg-card/40 px-6 py-3.5 text-sm font-semibold backdrop-blur hover:bg-card">
+              <Link to="/galeria" className="inline-flex items-center justify-center gap-2 rounded-md border border-border bg-card/40 px-6 py-3.5 text-sm font-semibold backdrop-blur hover:bg-card">
                 Ver Trabajos Realizados <ArrowRight className="h-4 w-4" />
-              </a>
+              </Link>
             </div>
             <div className="mt-12 grid max-w-xl grid-cols-3 gap-6 border-t border-border/60 pt-8">
               {[
@@ -177,7 +135,7 @@ function Landing() {
         <div className="container-x">
           <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
             <div>
-              <div className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">¿Por qué DAFMETAL?</div>
+            <div className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">¿Por qué BOCETO?</div>
               <h2 className="mt-3 font-display text-3xl font-bold sm:text-4xl md:text-5xl">Profesionalismo, prolijidad y palabra cumplida.</h2>
               <p className="mt-5 max-w-xl text-muted-foreground">
                 Más de una década llevando soluciones de herrería y reformas a familias y comercios de Buenos Aires. Nuestro diferencial: trabajos limpios, sin obras invasivas y entregas en el plazo pactado.
@@ -200,33 +158,6 @@ function Landing() {
         </div>
       </section>
 
-      {/* GALERIA */}
-      <section id="galeria" className="py-24 sm:py-32">
-        <div className="container-x">
-          <div className="mx-auto max-w-2xl text-center">
-            <div className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">Portfolio</div>
-            <h2 className="mt-3 font-display text-3xl font-bold sm:text-4xl md:text-5xl">Trabajos realizados</h2>
-            <p className="mt-4 text-muted-foreground">Una muestra de nuestras instalaciones recientes en Buenos Aires.</p>
-          </div>
-          <div className="mt-14 grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-6 md:grid-rows-2 md:gap-5">
-            <div className="group relative col-span-2 row-span-2 md:col-span-3 md:row-span-2 aspect-square overflow-hidden rounded-xl">
-              <img src={gallery[0].src} alt={gallery[0].label} loading="lazy" width={1024} height={1024} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/20 to-transparent" />
-              <div className="absolute bottom-4 left-4 right-4">
-                <div className="text-xs font-medium uppercase tracking-wider text-primary">Destacado</div>
-                <div className="font-display text-xl font-semibold">{gallery[0].label}</div>
-              </div>
-            </div>
-            {gallery.slice(1).map((g) => (
-              <div key={g.label} className="group relative col-span-1 md:col-span-3 lg:col-span-2 md:row-span-1 aspect-square overflow-hidden rounded-xl">
-                <img src={g.src} alt={g.label} loading="lazy" width={1024} height={1024} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent" />
-                <div className="absolute bottom-3 left-3 right-3 font-display text-sm font-semibold">{g.label}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* PROCESO */}
       <section id="proceso" className="relative border-y border-border bg-graphite/40 py-24 sm:py-32">
@@ -312,64 +243,7 @@ function Landing() {
         </div>
       </section>
 
-      {/* FOOTER */}
-      <footer id="contacto" className="border-t border-border bg-graphite/60">
-        <div className="container-x py-16">
-          <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
-            <div>
-              <div className="flex items-center gap-2">
-                <div className="flex h-9 w-9 items-center justify-center rounded-md bg-gradient-orange">
-                  <Hammer className="h-5 w-5 text-primary-foreground" />
-                </div>
-                <span className="font-display text-lg font-bold">DAF<span className="text-gradient-orange">METAL</span></span>
-              </div>
-              <p className="mt-4 text-sm text-muted-foreground">
-                Mosquiteros, herrería y reformas sin romper en Buenos Aires. Más de 10 años brindando soluciones de calidad.
-              </p>
-              <div className="mt-5 flex gap-3">
-                <a href="#" aria-label="Instagram" className="flex h-9 w-9 items-center justify-center rounded-md border border-border hover:bg-primary hover:text-primary-foreground"><Instagram className="h-4 w-4" /></a>
-                <a href="#" aria-label="Facebook" className="flex h-9 w-9 items-center justify-center rounded-md border border-border hover:bg-primary hover:text-primary-foreground"><Facebook className="h-4 w-4" /></a>
-                <a href={WA_LINK} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="flex h-9 w-9 items-center justify-center rounded-md border border-border hover:bg-whatsapp hover:text-whatsapp-foreground"><MessageCircle className="h-4 w-4" /></a>
-              </div>
-            </div>
-            <div>
-              <h4 className="font-display text-sm font-semibold uppercase tracking-wider">Contacto</h4>
-              <ul className="mt-4 space-y-3 text-sm text-muted-foreground">
-                <li className="flex items-center gap-2"><Phone className="h-4 w-4 text-primary" /> +54 9 11 0000-0000</li>
-                <li className="flex items-center gap-2"><MessageCircle className="h-4 w-4 text-primary" /> WhatsApp directo</li>
-                <li className="flex items-start gap-2"><MapPin className="h-4 w-4 text-primary mt-0.5" /> CABA y Gran Buenos Aires</li>
-                <li className="flex items-start gap-2"><Clock className="h-4 w-4 text-primary mt-0.5" /> Lun a Sáb · 8:00 a 19:00</li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-display text-sm font-semibold uppercase tracking-wider">Servicios</h4>
-              <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
-                <li>Mosquiteros a medida</li>
-                <li>Rejas y protecciones</li>
-                <li>Cerramientos</li>
-                <li>Herrería general</li>
-                <li>Reformas sin romper</li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-display text-sm font-semibold uppercase tracking-wider">Zona de servicio</h4>
-              <div className="mt-4 overflow-hidden rounded-lg border border-border">
-                <iframe
-                  title="Mapa Buenos Aires"
-                  src="https://www.google.com/maps?q=Buenos+Aires,+Argentina&output=embed"
-                  width="100%" height="180" loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  className="block grayscale"
-                />
-              </div>
-            </div>
-          </div>
-          <div className="mt-12 flex flex-col items-center justify-between gap-3 border-t border-border pt-6 text-xs text-muted-foreground md:flex-row">
-            <div>© {new Date().getFullYear()} DAFMETAL. Todos los derechos reservados.</div>
-            <div>Buenos Aires, Argentina</div>
-          </div>
-        </div>
-      </footer>
+      <SiteFooter />
 
       <WhatsAppFloat />
     </div>
