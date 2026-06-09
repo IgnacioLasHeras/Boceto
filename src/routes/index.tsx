@@ -1,21 +1,19 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   Shield, Hammer, Building2, Home, Wrench, Sparkles, Bug, Zap,
   CheckCircle2, MessageCircle, Phone, MapPin, Clock, Instagram, Facebook,
   ArrowRight, Star, Award, Clock4, ShieldCheck, ThumbsUp, Users, FileText, Truck,
 } from "lucide-react";
 import heroImg from "@/assets/hero-house.jpg";
-import imgMosquitero from "@/assets/work-mosquitero.jpg";
-import imgRejas from "@/assets/work-rejas.jpg";
-import imgCerramiento from "@/assets/work-cerramiento.jpg";
-import imgHerreria from "@/assets/work-herreria.jpg";
-import imgReforma from "@/assets/work-reforma.jpg";
-import { WhatsAppFloat, WA_LINK } from "@/components/WhatsAppFloat";
+import { WhatsAppFloat } from "@/components/WhatsAppFloat";
+import { SiteHeader } from "@/components/SiteHeader";
+import { SiteFooter } from "@/components/SiteFooter";
+import { WAButton } from "@/components/WAButton";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "DAFMETAL — Mosquiteros, Herrería y Reformas sin Romper · Buenos Aires" },
+      { title: "BOCETO — Mosquiteros, Herrería y Reformas sin Romper · Buenos Aires" },
       { name: "description", content: "Mosquiteros a medida, herrería residencial y comercial, rejas, cerramientos y reformas sin romper en Buenos Aires. Presupuesto gratis por WhatsApp." },
     ],
   }),
@@ -44,13 +42,6 @@ const reasons = [
   { icon: MessageCircle, title: "Asesoramiento profesional" },
 ];
 
-const gallery = [
-  { src: imgMosquitero, label: "Mosquiteros instalados" },
-  { src: imgRejas, label: "Rejas modernas" },
-  { src: imgCerramiento, label: "Cerramientos" },
-  { src: imgHerreria, label: "Trabajos de herrería" },
-  { src: imgReforma, label: "Reformas terminadas" },
-];
 
 const steps = [
   { n: "01", icon: MessageCircle, title: "Contacto por WhatsApp", desc: "Escribinos y contanos qué necesitás." },
@@ -65,43 +56,10 @@ const testimonials = [
   { name: "Carolina P.", area: "Belgrano", text: "Reformaron mi baño sin romper paredes. Resultado increíble y sin escombros." },
 ];
 
-function WAButton({ label, variant = "primary", className = "" }: { label: string; variant?: "primary" | "wa" | "outline"; className?: string }) {
-  const base = "inline-flex items-center justify-center gap-2 rounded-md px-6 py-3.5 text-sm font-semibold transition-all duration-200 hover:scale-[1.03]";
-  const styles = {
-    primary: "bg-gradient-orange text-primary-foreground shadow-glow",
-    wa: "bg-whatsapp text-whatsapp-foreground shadow-card",
-    outline: "border border-border bg-card/40 text-foreground backdrop-blur hover:bg-card",
-  } as const;
-  return (
-    <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className={`${base} ${styles[variant]} ${className}`}>
-      <MessageCircle className="h-4 w-4" />
-      {label}
-    </a>
-  );
-}
-
 function Landing() {
   return (
     <div className="min-h-screen bg-background text-foreground">
-      {/* NAV */}
-      <header className="fixed top-0 z-40 w-full border-b border-border/60 bg-background/80 backdrop-blur-md">
-        <div className="container-x flex h-16 items-center justify-between">
-          <a href="#top" className="flex items-center gap-2">
-            <div className="flex h-9 w-9 items-center justify-center rounded-md bg-gradient-orange">
-              <Hammer className="h-5 w-5 text-primary-foreground" />
-            </div>
-            <span className="font-display text-lg font-bold tracking-tight">DAF<span className="text-gradient-orange">METAL</span></span>
-          </a>
-          <nav className="hidden gap-7 text-sm font-medium text-muted-foreground md:flex">
-            <a href="#servicios" className="hover:text-foreground">Servicios</a>
-            <a href="#nosotros" className="hover:text-foreground">Nosotros</a>
-            <a href="#galeria" className="hover:text-foreground">Galería</a>
-            <a href="#proceso" className="hover:text-foreground">Proceso</a>
-            <a href="#contacto" className="hover:text-foreground">Contacto</a>
-          </nav>
-          <WAButton label="Presupuesto" variant="wa" className="hidden md:inline-flex !px-4 !py-2 !text-xs" />
-        </div>
-      </header>
+      <SiteHeader />
 
       {/* HERO */}
       <section id="top" className="relative flex min-h-screen items-center overflow-hidden pt-16">
@@ -124,9 +82,9 @@ function Landing() {
             </p>
             <div className="mt-9 flex flex-wrap gap-3">
               <WAButton label="Solicitar Presupuesto por WhatsApp" variant="primary" />
-              <a href="#galeria" className="inline-flex items-center justify-center gap-2 rounded-md border border-border bg-card/40 px-6 py-3.5 text-sm font-semibold backdrop-blur hover:bg-card">
+              <Link to="/galeria" className="inline-flex items-center justify-center gap-2 rounded-md border border-border bg-card/40 px-6 py-3.5 text-sm font-semibold backdrop-blur hover:bg-card">
                 Ver Trabajos Realizados <ArrowRight className="h-4 w-4" />
-              </a>
+              </Link>
             </div>
             <div className="mt-12 grid max-w-xl grid-cols-3 gap-6 border-t border-border/60 pt-8">
               {[
@@ -177,7 +135,7 @@ function Landing() {
         <div className="container-x">
           <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
             <div>
-              <div className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">¿Por qué DAFMETAL?</div>
+            <div className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">¿Por qué BOCETO?</div>
               <h2 className="mt-3 font-display text-3xl font-bold sm:text-4xl md:text-5xl">Profesionalismo, prolijidad y palabra cumplida.</h2>
               <p className="mt-5 max-w-xl text-muted-foreground">
                 Más de una década llevando soluciones de herrería y reformas a familias y comercios de Buenos Aires. Nuestro diferencial: trabajos limpios, sin obras invasivas y entregas en el plazo pactado.
