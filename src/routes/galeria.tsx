@@ -107,6 +107,7 @@ function GalleryPage() {
       </main>
       <SiteFooter />
       <WhatsAppFloat />
+      <AIChat />
     </div>
   );
 }
