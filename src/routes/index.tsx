@@ -6,6 +6,7 @@ import {
 } from "lucide-react";
 import heroImg from "@/assets/hero-house.jpg";
 import { WhatsAppFloat } from "@/components/WhatsAppFloat";
+import { AIChat } from "@/components/AIChat";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { WAButton } from "@/components/WAButton";
@@ -246,6 +247,7 @@ function Landing() {
       <SiteFooter />
 
       <WhatsAppFloat />
+      <AIChat />
     </div>
   );
 }
