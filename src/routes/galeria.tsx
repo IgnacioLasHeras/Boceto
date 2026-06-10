@@ -8,6 +8,7 @@ import imgReforma from "@/assets/work-reforma.jpg";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { WhatsAppFloat } from "@/components/WhatsAppFloat";
+import { AIChat } from "@/components/AIChat";
 
 export const Route = createFileRoute("/galeria")({
   head: () => ({
@@ -106,6 +107,7 @@ function GalleryPage() {
       </main>
       <SiteFooter />
       <WhatsAppFloat />
+      <AIChat />
     </div>
   );
 }
